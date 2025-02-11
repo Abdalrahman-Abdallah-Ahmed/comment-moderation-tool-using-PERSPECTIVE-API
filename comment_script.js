@@ -1,6 +1,4 @@
 value: function () {
-  const { replyText } = this.state;
-  const { user, parent, createComment, updateCfActive } = this.props;
 
   // Define configuration
   const API_KEY = //Your API key
@@ -38,33 +36,6 @@ value: function () {
         return;
       }
 
-      // Prepare comment object for submission
-      const commentData = {
-        parentID: parent || 0,
-        content: replyText.trim(),
-        userID: user.id,
-        author: user.name
-      };
-
-      // Submit comment
-      this.lockInput();
-      this.setState({ loading: true, error: false });
-
-      createComment(commentData, response => {
-        this.unlockInput();
-
-        if (isNaN(parseInt(response, 10))) {
-          this.setState({ error: response, loading: false });
-          return;
-        }
-
-        this.setState({ loading: false });
-        this.clearInput();
-
-        if (typeof updateCfActive === "function") {
-          updateCfActive(false);
-        }
-      });
     })
     .catch(err => {
       console.error("Error with Perspective API:", err);
