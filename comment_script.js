@@ -1,7 +1,7 @@
 value: function () {
 
   // Define configuration
-  const API_KEY = //Your API key
+  const API_KEY = ; //Your API key
   const API_URL = `https://commentanalyzer.googleapis.com/v1alpha1/comments:analyze?key=${API_KEY}`;
   const THRESHOLD = 0.7;
 
